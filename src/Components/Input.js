@@ -18,8 +18,7 @@ const CustomInput=styled('input')`
 function Input(props){
  
   return (
-  <CustomInput  placeholder="What needs to be done?" value={props.value} 
-  onChange={props.change} onKeyPress={props.enter} disableUnderline = {true} />
+  <CustomInput  placeholder="What needs to be done?" value={props.value} onChange={props.change} onKeyPress={props.enter} disableUnderline = {true} />
   );
 }
 

@@ -1,5 +1,4 @@
 import React from "react";
-
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
@@ -61,18 +60,13 @@ function TodoItem(props){
       return (
         <CustomizedBox>
         {!props.todo.isEdit && (
-          <Button onClick={() => props.toggle(props.todo)}>
+          <Button onClick={() => props.toggle(props.todo)}> 
             {props.todo.done ? <TickCircle /> : <Circle />}
           </Button>
         )}
         {props.todo.isEdit ? (
-          <CustommInput
-            type="text"
-            disableUnderline={true}
-            value={props.value}
-            onChange={props.change}
-            onKeyPress={(e) => props.enter(e, props.todo.id)}
-          />
+          <CustommInput type="text" disableUnderline={true} value={props.value} onChange={props.change}
+            onKeyPress={(e) => props.enter(e, props.todo.id)}  />
         ) : (
           <List
             sx={{ textDecoration: props.todo.done ? "line-through" : "none" }}

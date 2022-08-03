@@ -7,6 +7,7 @@ import { useCallback, useMemo } from "react";
 import Box from "@mui/material/Box";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  
   addTodo,
   checkAll,
   toggleDone,
@@ -17,7 +18,7 @@ import {
   newTodo,
   editTodo,
   clickFilter,
-} from "./actions/index";
+} from "../actions/index";
 
 function TodoApp(){
 

@@ -57,7 +57,7 @@ const todoReducers = (state = initialState, action) => {
         ...state,
         all: temp,
       };
-
+               
     case TOGGLE:
       const toggle = state.all.map((item) =>
         item.id === action.payload.id ? { ...item, done: !item.done } : item

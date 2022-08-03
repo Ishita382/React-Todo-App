@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 import Box from "@mui/material/Box";
 
 
-const CustomButton = styled('Button')`
+const CustomButton = styled(Button)`
 color: #E5E8EA   ;
 border:none;
 background-color:white;

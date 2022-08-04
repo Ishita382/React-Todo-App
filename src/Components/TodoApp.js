@@ -6,6 +6,7 @@ import Button from "./Button";
 import { useCallback, useMemo } from "react";
 import Box from "@mui/material/Box";
 import { useSelector, useDispatch } from "react-redux";
+import { styled } from "@mui/material/styles";
 import {
   
   addTodo,
@@ -19,6 +20,23 @@ import {
   editTodo,
   clickFilter,
 } from "../actions/index";
+
+const Heading = styled(Box)`
+  font-size: 100px;
+  font-weight: 500;
+  text-align: center;
+  margin: 5px;
+  color: rgba(175, 47, 47, 0.25);
+`;
+
+const Top = styled(Box)`
+  border: none;
+  width: 600px;
+  height: 60px;
+  display: flex;
+  margin: auto;
+  background-color: white;
+`;
 
 function TodoApp(){
 
@@ -74,19 +92,18 @@ function TodoApp(){
       () => dispatch(checkAll(completed, list)),
       [dispatch, completed, list]
     );
-  
+      
     return (
       <Box>
-        <h1>todos</h1>
-        <div className="main">
-        <div className="top">
-          <Button countAll={list} checkAll={clickAll} />
-          <Input 
-            value={newToDo}
-            change={(e) => dispatch(newTodo(e.target.value))}
-            enter={(e) => addItem(e, newToDo)}
-          />
-        </div>
+         <Heading>todos</Heading>
+      <Top>
+        <Button countAll={list} checkAll={clickAll} />
+        <Input
+          value={newToDo}
+          change={(e) => dispatch(newTodo(e.target.value))}
+          enter={(e) => addItem(e, newToDo)}
+        />
+      </Top>
         {listToMap.map((item) => (
           <TodoItem
             key={item.id}
@@ -107,7 +124,7 @@ function TodoApp(){
             clear={() => dispatch(clear())}
           />
         )}
-        </div>
+      
       </Box>
     );
   }

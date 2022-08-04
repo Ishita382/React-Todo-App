@@ -40,6 +40,8 @@ const CustomizedButton= styled(Button)`
     box-shadow: 0 1px 1px rgb(0 0 0 / 20%), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgb(0 0 0 / 20%), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgb(0 0 0 / 20%);
     display: flex;
     padding-left: 50px;
+    background-color: white;
+    width: 550px;
     `;
 
     const Items = styled('Box')`
@@ -57,17 +59,17 @@ const CustomizedButton= styled(Button)`
     `
 
 function Footer(props){
-    
-    
+        const {click, clear, completed, left} = props;
+        
         return(
             <CustomBox>
-            <Items>{props.left} {props.left===1?"item":"items"} left</Items>
+            <Items>{left} {left===1?"item":"items"} left</Items>
             <Buttons>
-            <CustomizedButton onClick={()=>props.change("all")} >All</CustomizedButton>
-            <CustomizedButton onClick={()=>props.change("active")} >Active</CustomizedButton>
-            <CustomizedButton onClick={()=>props.change("completed")} >Completed</CustomizedButton>
+            <CustomizedButton onClick={()=>{click("all")}} >All</CustomizedButton>
+            <CustomizedButton onClick={()=>{click("active")}} >Active</CustomizedButton>
+            <CustomizedButton onClick={()=>{click("completed")}} >Completed</CustomizedButton>
             </Buttons>
-            {props.completed>0 && (<ClearButton onClick={props.clear}>
+            {completed>0 && (<ClearButton onClick={clear}>
                 Clear Completed</ClearButton>)}
              </CustomBox>
         );

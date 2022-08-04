@@ -14,11 +14,11 @@ padding-top: 10px;
 font-size: 20px;
 `
 function Arrowbutton(props){
-   
+    const {countAll, checkAll} = props;
             return (
                 <Box>
-        {props.countAll ?  (
-          <CustomButton onClick={props.checkAll}>
+        {countAll ?  (
+          <CustomButton onClick={checkAll}>
             <FaChevronDown />
           </CustomButton>
         ) : (

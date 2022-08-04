@@ -1,15 +1,15 @@
 import { v4 as uuid } from "uuid";
 import {
-  ADD,
-  NEW,
-  EDIT_ITEM,
-  ALL,
-  TOGGLE,
+  ADD_ITEM,
+  NEW_ITEM,
+  EDIT_TODO_ITEM,
+  TODOLIST,
+  TOGGLE_ITEM,
   EDIT,
   REPLACE,
   DELETE,
   FILTER,
-  CLEAR,
+  CLEAR_COMPLETED,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -21,7 +21,7 @@ const initialState = {
 
 const todoReducers = (state = initialState, action) => {
   switch (action.type) {
-    case ADD:
+    case ADD_ITEM:
       return {
         ...state,
         all: [
@@ -36,19 +36,19 @@ const todoReducers = (state = initialState, action) => {
         newToDo: "",
       };
 
-    case NEW:
+    case NEW_ITEM:
       return {
         ...state,
         newToDo: action.payload.value,
       };
 
-    case EDIT_ITEM:
+    case EDIT_TODO_ITEM:
       return {
         ...state,
         editToDo: action.payload.value,
       };
 
-    case ALL:
+    case TODOLIST:
       const temp =
         action.payload.completed < action.payload.list
           ? state.all.map((item) => (item = { ...item, done: true }))
@@ -58,7 +58,7 @@ const todoReducers = (state = initialState, action) => {
         all: temp,
       };
                
-    case TOGGLE:
+    case TOGGLE_ITEM:
       const toggle = state.all.map((item) =>
         item.id === action.payload.id ? { ...item, done: !item.done } : item
       );
@@ -68,14 +68,14 @@ const todoReducers = (state = initialState, action) => {
       };
 
     case EDIT:
-      const edittodo = state.all.map((item) =>
+      const editTodo = state.all.map((item) =>
         item.id === action.payload.id
           ? { ...item, action: action.payload.editToDo, isEdit: false }
           : item
       );
       return {
         ...state,
-        all: edittodo,
+        all: editTodo,
         editToDo: "",
       };
 
@@ -102,7 +102,7 @@ const todoReducers = (state = initialState, action) => {
         mode: action.payload.mode,
       };
 
-    case CLEAR:
+    case CLEAR_COMPLETED:
       const filterarray = state.all.filter((item) => item.done === false);
       return {
         ...state,

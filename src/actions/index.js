@@ -1,47 +1,47 @@
 import {
-    ADD,
-    NEW,
-    EDIT_ITEM,
-    ALL,
-    TOGGLE,
+    ADD_ITEM,
+    NEW_ITEM,
+    EDIT_TODO_ITEM,
+    TODOLIST,
+    TOGGLE_ITEM,
     EDIT,
     REPLACE,
     DELETE,
     FILTER,
-    CLEAR,
+    CLEAR_COMPLETED,
   } from "./actionTypes";
   
   export const addTodo = (value) => {
     return {
-      type: ADD,
+      type: ADD_ITEM,
       payload: { value: value },
     };
   };
   
   export const newTodo = (value) => {
     return {
-      type: NEW,
+      type: NEW_ITEM,
       payload: { value: value },
     };
   };
   
   export const editTodo = (value) => {
     return {
-      type: EDIT_ITEM,
+      type: EDIT_TODO_ITEM,
       payload: { value: value },
     };
   };
   
   export const checkAll = (completed, list) => {
     return {
-      type: ALL,
+      type: TODOLIST,
       payload: { completed: completed, list: list },
     };
   };
   
   export const toggleDone = (id) => {
     return {
-      type: TOGGLE,
+      type: TOGGLE_ITEM,
       payload: { id: id },
     };
   };
@@ -76,6 +76,6 @@ import {
   
   export const clear = () => {
     return {
-      type: CLEAR,
+      type:CLEAR_COMPLETED,
     };
   };

@@ -19,6 +19,8 @@ const CustomizedBox = styled(Box)`
   }
  padding-right: 40px;
  border-bottom: 1px solid #E5E8EA;
+ background-color: white;
+ width: 560px;
 `;
 
 const TickCircle = styled(CheckCircleOutlinedIcon)`
@@ -55,28 +57,28 @@ const Delete = styled(Button)`
   display: none;
 `;
 
+
 function TodoItem(props){
-  
+  const {toggle, todo, value, change, editInput, enter} = props;
       return (
         <CustomizedBox>
         {!props.todo.isEdit && (
-          <Button onClick={() => props.toggle(props.todo)}> 
+          <Button onClick={() => {toggle(props.todo)}}> 
             {props.todo.done ? <TickCircle /> : <Circle />}
           </Button>
         )}
         {props.todo.isEdit ? (
-          <CustommInput type="text" disableUnderline={true} value={props.value} onChange={props.change}
-            onKeyPress={(e) => props.enter(e, props.todo.id)}  />
+          <CustommInput type="text" disableUnderline={true} value={value} onChange={change}
+            onKeyPress={(e) => {enter(e, todo.id)}}  />
         ) : (
           <List
             sx={{ textDecoration: props.todo.done ? "line-through" : "none" }}
-            onDoubleClick={() => props.editInput(props.todo)}
-          >
-            {props.todo.action}
+            onDoubleClick={() => {editInput(todo)}}>
+            {todo.action}
           </List>
         )}
-        {!props.todo.isEdit && (
-          <Delete className="delete" onClick={() => props.delete(props.todo)}>
+        {!todo.isEdit && (
+          <Delete className="delete" onClick={() => {props.delete(todo)}}>
             <CloseIcon />
           </Delete>
         )}
@@ -85,3 +87,4 @@ function TodoItem(props){
     
   }
   export default TodoItem;
+  

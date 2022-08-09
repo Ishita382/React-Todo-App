@@ -18,7 +18,7 @@ const initialState = {
   newToDo: "",
   editToDo: "",
 };
-
+const action_id = uuid();
 const todoReducers = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ITEM:
@@ -27,7 +27,7 @@ const todoReducers = (state = initialState, action) => {
         all: [
           ...state.all,
           {
-            id: uuid(),
+            id: action_id,
             action: action.payload.value,
             done: false,
             isEdit: false,
@@ -68,11 +68,12 @@ const todoReducers = (state = initialState, action) => {
       };
 
     case EDIT:
-      const editTodo = state.all.map((item) =>
+      const editTodo = state.all.map((item) =>{
+        return (
         item.id === action.payload.id
           ? { ...item, action: action.payload.editToDo, isEdit: false }
           : item
-      );
+      ) } );
       return {
         ...state,
         all: editTodo,

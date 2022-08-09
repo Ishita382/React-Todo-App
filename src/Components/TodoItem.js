@@ -59,12 +59,12 @@ const Delete = styled(Button)`
 
 
 function TodoItem(props){
-  const {toggle, todo, value, change, editInput, enter} = props;
+  const {toggle, todo, value, change, editInput, enter, isEdit, done} = props;
       return (
         <CustomizedBox>
-        {!props.todo.isEdit && (
-          <Button onClick={() => {toggle(props.todo)}}> 
-            {props.todo.done ? <TickCircle /> : <Circle />}
+        {!todo.isEdit && (
+          <Button onClick={() => {toggle(todo)}}> 
+            {todo.done ? <TickCircle /> : <Circle />}
           </Button>
         )}
         {props.todo.isEdit ? (
